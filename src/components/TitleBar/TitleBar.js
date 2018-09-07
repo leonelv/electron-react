@@ -20,7 +20,7 @@ const Title = styled.p`
 	font-size: 10pt;
 	font-weight: 400;
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-	padding-left: 15px;
+	padding-left: 10px;
 	margin: 0;
 	padding-bottom: 2px;
 `
@@ -46,6 +46,19 @@ const ButtonContainer = styled.div`
 	display: flex;
 	-webkit-app-region: no-drag;
 `
+
+const TitleContainer = styled.div`
+	display: flex;
+	align-items: center;
+`
+
+const Icon = styled.div`
+	height: 20px;
+	width: 20px;
+	background: pink;
+	margin-left: 10px;
+`
+
 class TitleBar extends Component {
 	state = {
 		maximized: false
@@ -74,7 +87,10 @@ class TitleBar extends Component {
 	render() {
 		return (
 			<Bar>
-				<Title>{this.props.manifest.short_name}</Title>
+				<TitleContainer>
+					<Icon />
+					<Title>{this.props.manifest.short_name}</Title>
+				</TitleContainer>
 				<ButtonContainer>
 					<Box onClick={this.minimize}>
 						<svg xmlns="http://www.w3.org/2000/svg" width="10" height="1">
