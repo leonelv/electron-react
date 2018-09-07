@@ -53,8 +53,8 @@ const TitleContainer = styled.div`
 `
 
 const Icon = styled.div`
-  height: 20px;
-  width: 20px;
+  height: 18px;
+  width: 18px;
   margin-left: 10px;
 `
 
@@ -82,6 +82,9 @@ class TitleBar extends Component {
   }
   componentWillMount() {
     this.props.readManifest()
+  }
+  componentDidMount(props) {
+    if (props) document.title = props.manifest.short_name
   }
   render() {
     return (
