@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-
+import { connect } from 'react-redux'
+import { readManifest } from '../../actions/readManifestActions'
 const remote = window.require('electron').remote
 let mainWindow = remote.getCurrentWindow()
 
@@ -21,7 +22,7 @@ const Title = styled.p`
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	padding-left: 15px;
 	margin: 0;
-  padding-bottom: 2px;
+	padding-bottom: 2px;
 `
 
 const Box = styled.div`
@@ -67,11 +68,13 @@ class TitleBar extends Component {
 	minimize = () => {
 		mainWindow.minimize()
 	}
-
+	componentWillMount() {
+		this.props.readManifest()
+	}
 	render() {
 		return (
 			<Bar>
-				<Title>codename</Title>
+				<Title>{this.props.manifest.short_name}</Title>
 				<ButtonContainer>
 					<Box onClick={this.minimize}>
 						<svg xmlns="http://www.w3.org/2000/svg" width="10" height="1">
@@ -100,5 +103,10 @@ class TitleBar extends Component {
 		)
 	}
 }
-
-export default TitleBar
+const mapStateToProps = state => ({
+	manifest: state.manifest.manifest
+})
+export default connect(
+	mapStateToProps,
+	{ readManifest }
+)(TitleBar)

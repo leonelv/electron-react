@@ -1,0 +1,1 @@
+export const READ_MANIFEST = 'READ_MANIFEST'
