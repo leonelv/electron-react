@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 
 import TitleBar from './components/TitleBar/TitleBar'
-import Auth from './views/auth'
+import Main from './views/Main'
 import Container from './components/Container'
 
 import { Provider } from 'react-redux'
@@ -19,7 +19,7 @@ class App extends Component {
         <AppContainer>
           <TitleBar />
           <Container>
-            a
+            <Main />
           </Container>
         </AppContainer>
       </Provider>
